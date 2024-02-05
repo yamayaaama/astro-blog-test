@@ -1,6 +1,6 @@
 ---
 title: "5番目のブログ記事"
-pubDate: 2024-02-05
+pubDate: 2024-02-06
 description: "これは私のAstroブログの3番目の記事です"
 author: yama
 image:
