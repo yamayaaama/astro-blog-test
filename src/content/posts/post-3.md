@@ -6,7 +6,7 @@ author: yama
 image:
   url: "https://docs.astro.build/assets/full-logo-light.png"
   alt: "astroのロゴ"
-tags: ["astro", "blog" ,"python" ,"next.js" ]
+tags: ["astro", "blog" ,"python" ,"nextjs" ]
 ---
 ## Astroでブログ作ったお
 このHPはAstroだお。  
