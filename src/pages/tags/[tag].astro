@@ -1,0 +1,38 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BlogPost from "../../components/BlogPost.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection("posts");
+  const uniqueTags = [... new Set(allPosts.map((post) => post.data.tags).flat()),];
+  
+  return uniqueTags.map((tag) => {
+    const filteredPosts = allPosts.filter((post) => post.data.tags?.includes(tag),);
+
+    return { 
+      params: { tag : tag } , 
+      props:{ posts : filteredPosts}, 
+    };
+  });
+}
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+const filteredPosts = posts.filter((post) => post.data.tags?.includes(tag));
+---
+
+<style>
+  li { 
+    list-style: circle;
+  }
+</style>
+
+<BaseLayout pageTitle={tag}>
+<p>{ tag } がついた記事一覧はこちら↓</p>
+
+    { filteredPosts.map((post) => (
+      <BlogPost pubDate={new Date(post.data.pubDate).toLocaleDateString('ja-JP', { year: 'numeric', month: 'numeric', day: 'numeric', weekday: 'short' })} url={`/posts/${post.slug}`} title={post.data.title} />
+      ))
+    }
+
+</BaseLayout>

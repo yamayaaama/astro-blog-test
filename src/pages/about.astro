@@ -1,0 +1,48 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+const pageTitle = "About me | Yama.Works";
+
+const identity = {
+  name: "Yama",
+  country: "Kanie-Japan",
+  ocupation: "Web Engineer",
+  hobby: ["Programming", "runninng", "reading"],
+};
+
+const skills = ["html", "CSS", "javascript", "node.js"];
+const skillColor = "green";
+const fontWeight = "bold";
+const textCase = "uppercase";
+---
+
+<style define:vars={{ skillColor, fontWeight, textCase }}>
+  h1 {
+    color: purple;
+    font-size: 2rem;
+  }
+  .skill {
+    color: var(--skillColor);
+    font-weight: var(--fontWeight);
+    text-transform: var(--textCase);
+  }
+</style>
+
+<BaseLayout pageTitle={ pageTitle }>
+  <h2>Astroを使って高速で動くブログを作ります。</h2>
+  <p>これからも頑張って勉強をしていきます。</p>
+  <p>about me</p>
+  <ul>
+    <li>name: {identity.name}</li>
+    <li>country: {identity.country}</li>
+    <li>ocupation: {identity.ocupation}</li>
+    <li>hobby: {identity.hobby.join(", ")}</li>
+  </ul>
+  <p>skills</p>
+  <ul>
+    {skills.map((skill) => <li class="skill">{skill}</li>)}
+  </ul>
+
+</BaseLayout>

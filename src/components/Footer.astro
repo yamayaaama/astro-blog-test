@@ -1,0 +1,24 @@
+---
+import Social from "./Social.astro";
+const userName = "yama.works";
+---
+
+<style>
+  footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: #f5f5f5;
+  }
+  p {
+    margin: 0;
+  }
+</style>
+
+<footer>
+  <Social platform="twitter" userName="yama" />
+  <Social platform="github" userName="yamayaaama" />
+  <p>&copy; 2023  {userName}</p>
+</footer>
