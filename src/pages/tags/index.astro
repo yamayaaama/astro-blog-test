@@ -14,36 +14,24 @@ const tags = [... new Set(allPosts.map((post) => post.data.tags).flat()),];
   .tags {
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: 1em;
   }
-  a.tag {
-  display: block;
-  margin: 0.25em;
-  border: dotted 1px #a1a1a1;
-  padding: 0.15em 0.4em;
-  background-color: #f5f5f5;
-  transition: background-color 0.3s;
-  border-radius: 0.5em;
-  color: #00539f; /* リンクの色 */
-  text-decoration: none; /* 下線を消す */
-}
-
-a.tag:hover {
-  background-color: #e0e0e0;
-}
-
-a.tag > p {
-  margin: 0; /* p タグのデフォルトのマージンを削除 */
-}
-
+  .tag {
+    margin: 0.25em;
+    border: dotted 1px #a1a1a1;
+    border-radius: 0.5em;
+    padding: 0.5em 1em;
+    font-size: 1.15em;
+    background-color: #f8fcfd;
+  }
 </style>
+
 
 <BaseLayout pageTitle={pageTitle}>
   <div class="tags">
     {tags.map((tag) => (
-      <a href={`/tags/${tag}`} class="tag">
-        <p>{tag}</p>
-      </a>
+        <p class="tag">
+          <a href={`/tags/${tag}`}>{tag}</a>
+        </p>
     ))}
   </div>
 </BaseLayout>
